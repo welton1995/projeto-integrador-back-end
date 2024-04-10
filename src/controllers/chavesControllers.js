@@ -1,4 +1,6 @@
 const Chaves = require('../models/Chaves');
+const Saidas = require('../models/Saidas');
+const Entradas = require('../models/Entradas');
 
 const chavesControllers = {
   async listar(req, res) {
@@ -18,7 +20,7 @@ const chavesControllers = {
       const chaveExiste = await Chaves.findOne({ codigo });
 
       if(chaveExiste){
-        return res.status(409).send('Código de chave já cadastrado!');
+        return res.status(409).json('Código de chave já cadastrado!');
       }
 
       const novaChave = await Chaves.create({
@@ -46,14 +48,14 @@ const chavesControllers = {
         { new: true } // Opção para retornar o documento atualizado
       )
 
-      res.status(200).send(chave);
+      res.status(200).json(chave);
     } catch (error) {
       console.error(error);
-      res.status(400).json("Falha ao atualizar usuário");
+      res.status(400).json("Falha ao atualizar chave");
     }
   },
 
-  async remover(req, res) {
+  async remover(req, res, next) {
     try {
        const { id } = req.params;
        const chaveExiste = await Chaves.findById(id);
@@ -61,6 +63,7 @@ const chavesControllers = {
        if(!chaveExiste){
         return res.status(400).json(`Chave não encontrada!`);
        }
+       
        await Chaves.findByIdAndDelete(id);
 
        return res.status(200).json(`Registro removido com sucesso!`);

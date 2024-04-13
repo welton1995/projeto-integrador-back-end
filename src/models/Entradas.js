@@ -8,7 +8,7 @@ const entradaSchema = new mongoose.Schema({
 
 entradaSchema.pre('deleteMany', function(next){
     this.model('Chaves').deleteMany({ chaves: this._id }, next)
-})
+});
 
 const Entradas = mongoose.model('Entradas', entradaSchema);
 

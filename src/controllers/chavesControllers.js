@@ -63,7 +63,9 @@ const chavesControllers = {
        if(!chaveExiste){
         return res.status(400).json(`Chave não encontrada!`);
        }
-       
+
+       await Entradas.deleteMany({ chaves: id });
+       await Saidas.deleteMany({ chaves: id });
        await Chaves.findByIdAndDelete(id);
 
        return res.status(200).json(`Chave excluida com sucesso!`);

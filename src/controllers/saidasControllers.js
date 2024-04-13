@@ -45,6 +45,6 @@ const saidasControllers = {
       return console.log(error);
     }
   },
-}
+};
 
 module.exports = saidasControllers;

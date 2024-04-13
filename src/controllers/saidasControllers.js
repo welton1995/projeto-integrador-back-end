@@ -45,6 +45,24 @@ const saidasControllers = {
       return console.log(error);
     }
   },
+
+  async remover(req, res) {
+    try {
+       const { id } = req.params;
+       const entradaExiste = await Saidas.findById(id);
+
+       if(!entradaExiste){
+        return res.status(200).json(`Saída não encontrada!`);
+       }
+
+       await Saidas.findByIdAndDelete(id);
+
+       return res.status(200).json(`Saída excluida com sucesso!`);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(`Falha ao excluir saída tente novamnte!`);
+    }
+},
 };
 
 module.exports = saidasControllers;

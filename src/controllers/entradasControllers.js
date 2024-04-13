@@ -40,6 +40,24 @@ const entradasControllers = {
       return console.log(error);
     }
   },
+
+  async remover(req, res) {
+    try {
+       const { id } = req.params;
+       const entradaExiste = await Entradas.findById(id);
+
+       if(!entradaExiste){
+        return res.status(200).json(`Entrada não encontrada!`);
+       }
+
+       await Entradas.findByIdAndDelete(id);
+
+       return res.status(200).json(`Entrada excluida com sucesso!`);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(`Falha ao excluir entrada tente novamnte!`);
+    }
+},
 }
 
 module.exports = entradasControllers;

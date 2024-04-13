@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Entradas = require('./Entradas');
 
 const chaveSchema = new mongoose.Schema({
   nome: {
@@ -15,6 +16,12 @@ const chaveSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+});
+
+chaveSchema.pre('remove', async function (next) {
+  const chave = this;
+  await Entradas.deleteMany({ owner: chave_id });
+  next()
 });
 
 const Chaves = mongoose.model('Chaves',chaveSchema);

@@ -5,7 +5,7 @@ const Entradas = require('../models/Entradas');
 const chavesControllers = {
   async listar(req, res) {
     try {
-      const chaves = await Chaves.find({});
+      const chaves = await Chaves.find();
 
       res.status(200).json({ chaves });
     } catch (error) {
@@ -27,7 +27,7 @@ const chavesControllers = {
         nome, codigo, quantidade
       });
 
-      res.status(201).json({ novaChave });
+      res.status(201).json('Chave cadastrada com sucesso!');
     } catch (error) {
       console.log(error);
     }

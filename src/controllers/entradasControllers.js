@@ -4,7 +4,7 @@ const Entradas = require('../models/Entradas');
 const entradasControllers = {
   async listar(req, res) {
     try {
-      const entradas = await Entradas.find();
+      const entradas = await Entradas.find().populate('chaves');
 
       res.status(200).json(entradas);
     } catch (error) {
@@ -35,7 +35,7 @@ const entradasControllers = {
         chaves: id, quantidade
       });
 
-      res.status(201).json(entrada);     
+      res.status(201).json(`Entrada realizada com sucesso!`);     
     } catch (error) {
       return console.log(error);
     }

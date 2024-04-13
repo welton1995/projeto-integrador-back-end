@@ -4,7 +4,7 @@ const Saidas = require('../models/Saidas');
 const saidasControllers = {
   async listar(req, res){
     try {
-      const saidas = await Saidas.find();
+      const saidas = await Saidas.find().populate('chaves');
 
       res.status(200).json(saidas);
     } catch (error) {
@@ -40,7 +40,7 @@ const saidasControllers = {
         chaves: id, quantidade
       });
 
-      res.status(201).json(saida);     
+      res.status(201).json('Saída realizada com sucesso!');     
     } catch (error) {
       return console.log(error);
     }

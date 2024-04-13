@@ -1,7 +1,8 @@
 {
   "name": "projeto-integrador-back-end",
   "version": "1.0.0",
-  "main": "./src/server.js",
+  "description": "",
+  "main": "src/server.js",
   "scripts": {
     "dev": "node --watch src/server.js"
   },

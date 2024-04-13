@@ -118,6 +118,21 @@ const chavesControllers = {
   }
  },
 
+ async buscaCodigo (req, res) {
+  try {
+    const { codigo } = req.params;
+    const chave = await Chaves.findOne({ codigo });
+
+    if(!chave){
+      res.status(400).json('Código não cadastrado!');
+    }
+
+    res.status(200).json({chave});
+  } catch (error) {
+    return console.error(error); 
+  }
+ }
+
 }
 
 module.exports = chavesControllers;

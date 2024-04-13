@@ -11,6 +11,7 @@ routes.put('/:id', chavesControllers.atualizar);
 routes.delete('/:id', chavesControllers.remover);
 routes.put('/retirar/:id', chavesControllers.retirar);
 routes.put('/adicionar/:id', chavesControllers.adicionar);
+routes.get('/busca/:codigo', chavesControllers.buscaCodigo);
 
 routes.get('/saidas', saidasControllers.listar);
 routes.post('/saidas/:id', saidasControllers.criar);

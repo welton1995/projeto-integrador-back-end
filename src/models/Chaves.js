@@ -19,12 +19,22 @@ const chaveSchema = new mongoose.Schema({
 });
 
 chaveSchema.pre('remove', async function (next) {
-  const chave = this;
-  await Entradas.deleteMany({ chaves: chave._id });
-  next();
+  console.log('Middleware pre remove acionado para Chaves');
+  
+  try {
+    const chave = this;
+    
+    console.log('Removendo entradas relacionadas...');
+    await Entradas.deleteMany({ chaves: chave._id });
+    
+    console.log('Entradas relacionadas removidas com sucesso.');
+    next();
+  } catch (error) {
+    console.error('Erro ao remover entradas relacionadas:', error);
+    next(error); // Encaminhar o erro para o próximo middleware
+  }
 });
 
-
-const Chaves = mongoose.model('Chaves',chaveSchema);
+const Chaves = mongoose.model('Chaves', chaveSchema);
 
 module.exports = Chaves;

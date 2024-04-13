@@ -127,7 +127,7 @@ const chavesControllers = {
       res.status(400).json('Código não cadastrado!');
     }
 
-    res.status(200).json({chave});
+    res.status(200).json(chave);
   } catch (error) {
     return console.error(error); 
   }

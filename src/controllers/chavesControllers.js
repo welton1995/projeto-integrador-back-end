@@ -124,7 +124,7 @@ const chavesControllers = {
     const chave = await Chaves.findOne({ codigo });
 
     if(!chave){
-      res.status(400).json('Código não cadastrado!');
+      res.status(400).json('Chave não encontrada!');
     }
 
     res.status(200).json(chave);

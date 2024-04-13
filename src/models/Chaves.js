@@ -18,11 +18,12 @@ const chaveSchema = new mongoose.Schema({
   },
 });
 
-chaveSchema.pre('remove', async function (next) {
+chaveSchema.pre('deleteMany', async function (next) {
   const chave = this;
-  await Entradas.deleteMany({ owner: chave_id });
-  next()
+  await Entradas.deleteMany({ owner: chave._id });
+  next();
 });
+
 
 const Chaves = mongoose.model('Chaves',chaveSchema);
 

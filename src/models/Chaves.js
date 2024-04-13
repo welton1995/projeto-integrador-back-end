@@ -18,7 +18,7 @@ const chaveSchema = new mongoose.Schema({
   },
 });
 
-chaveSchema.pre('deleteMany', async function (next) {
+chaveSchema.pre('remove', async function (next) {
   const chave = this;
   await Entradas.deleteMany({ chaves: chave._id });
   next();

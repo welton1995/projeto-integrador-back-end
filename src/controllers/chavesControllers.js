@@ -66,10 +66,10 @@ const chavesControllers = {
        
        await Chaves.findByIdAndDelete(id);
 
-       return res.status(200).json(`Registro removido com sucesso!`);
+       return res.status(200).json(`Chave excluida com sucesso!`);
     } catch (error) {
         console.log(error);
-        res.status(400).json(`Falha ao remover registro tente novamnte!`);
+        res.status(400).json(`Falha ao excluir chave tente novamnte!`);
     }
 },
 

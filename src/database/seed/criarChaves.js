@@ -122,6 +122,6 @@ async function seed() {
 }
 
 seed().catch( error => {
-  console.log(`Erro ao criar dados! ${error}`);
+  console.log(`Erro ao criar dados! ${error.message}`);
   process.exit(1);
 });

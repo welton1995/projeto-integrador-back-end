@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "-" : "node src/database/seed/excluirChaves.js",
+    "+" : "node src/database/seed/criarChaves.js"
   },
   "keywords": [],
   "author": "",
